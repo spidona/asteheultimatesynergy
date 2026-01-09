@@ -2,65 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap');
 
-/* Everest Developers - Premium Real Estate Design System */
+/* Walsh Group - Industrial Construction Design System */
 
 @layer base {
   :root {
-    /* Core Palette - Warm luxury with architectural precision */
-    --background: 30 20% 98%;
-    --foreground: 220 20% 15%;
+    /* Core Palette - Bold Industrial with Construction Energy */
+    --background: 210 25% 97%;
+    --foreground: 215 30% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 215 30% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 215 30% 12%;
 
-    /* Primary - Deep Slate (Architectural, Professional) */
-    --primary: 220 20% 18%;
-    --primary-foreground: 30 20% 98%;
+    /* Primary - Deep Navy (Authority, Infrastructure) */
+    --primary: 215 45% 15%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Warm Stone */
-    --secondary: 30 15% 92%;
-    --secondary-foreground: 220 20% 18%;
+    /* Secondary - Steel Gray */
+    --secondary: 210 15% 92%;
+    --secondary-foreground: 215 30% 15%;
 
-    /* Gold Accent - Premium, Construction */
-    --accent: 38 65% 50%;
+    /* Accent - Construction Green (Walsh Brand) */
+    --accent: 145 70% 35%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 30 10% 94%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 210 15% 94%;
+    --muted-foreground: 215 15% 45%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 38 65% 50%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 145 70% 35%;
 
-    --radius: 0.25rem;
+    --radius: 0.125rem;
 
     /* Custom Design Tokens */
-    --gold: 38 65% 50%;
-    --gold-light: 38 65% 65%;
-    --gold-dark: 38 70% 40%;
-    --slate-dark: 220 20% 12%;
-    --slate: 220 20% 18%;
-    --slate-light: 220 15% 25%;
-    --cream: 30 20% 98%;
-    --stone: 30 15% 92%;
+    --walsh-green: 145 70% 35%;
+    --walsh-green-light: 145 65% 45%;
+    --walsh-green-dark: 145 75% 28%;
+    --navy-dark: 215 50% 10%;
+    --navy: 215 45% 15%;
+    --navy-light: 215 35% 22%;
+    --steel: 210 15% 92%;
+    --concrete: 210 10% 85%;
 
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(38 70% 45%), hsl(38 60% 55%));
-    --gradient-dark: linear-gradient(180deg, hsl(220 20% 12%), hsl(220 20% 18%));
-    --gradient-hero-overlay: linear-gradient(135deg, hsla(220, 20%, 12%, 0.85), hsla(220, 20%, 18%, 0.7));
+    --gradient-green: linear-gradient(135deg, hsl(145 75% 32%), hsl(145 65% 42%));
+    --gradient-dark: linear-gradient(180deg, hsl(215 50% 10%), hsl(215 45% 15%));
+    --gradient-hero-overlay: linear-gradient(135deg, hsla(215, 50%, 10%, 0.9), hsla(215, 45%, 15%, 0.75));
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -2px hsla(220, 20%, 15%, 0.08);
-    --shadow-medium: 0 8px 30px -4px hsla(220, 20%, 15%, 0.12);
-    --shadow-gold: 0 4px 20px -2px hsla(38, 65%, 50%, 0.25);
+    --shadow-soft: 0 4px 20px -2px hsla(215, 30%, 15%, 0.08);
+    --shadow-medium: 0 8px 30px -4px hsla(215, 30%, 15%, 0.15);
+    --shadow-green: 0 4px 20px -2px hsla(145, 70%, 35%, 0.3);
 
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
@@ -74,33 +74,33 @@
   }
 
   .dark {
-    --background: 220 20% 8%;
-    --foreground: 30 20% 95%;
+    --background: 215 50% 6%;
+    --foreground: 210 20% 95%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 30 20% 95%;
+    --card: 215 45% 10%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 220 20% 12%;
-    --popover-foreground: 30 20% 95%;
+    --popover: 215 45% 10%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 30 20% 95%;
-    --primary-foreground: 220 20% 12%;
+    --primary: 210 20% 95%;
+    --primary-foreground: 215 45% 10%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 30 20% 95%;
+    --secondary: 215 35% 15%;
+    --secondary-foreground: 210 20% 95%;
 
-    --accent: 38 65% 55%;
-    --accent-foreground: 220 20% 10%;
+    --accent: 145 65% 45%;
+    --accent-foreground: 215 50% 8%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 30 10% 60%;
+    --muted: 215 35% 15%;
+    --muted-foreground: 210 15% 60%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 38 65% 55%;
+    --border: 215 30% 18%;
+    --input: 215 30% 18%;
+    --ring: 145 65% 45%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -120,45 +120,50 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
   }
 }
 
 @layer components {
-  .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(38, 70%, 45%), hsl(38, 60%, 60%));
+  .text-gradient-green {
+    background: linear-gradient(135deg, hsl(145, 70%, 35%), hsl(145, 65%, 50%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .bg-gradient-gold {
-    background: linear-gradient(135deg, hsl(38, 70%, 45%), hsl(38, 60%, 55%));
+  .bg-gradient-green {
+    background: linear-gradient(135deg, hsl(145, 75%, 32%), hsl(145, 65%, 42%));
   }
 
   .bg-gradient-dark {
-    background: linear-gradient(180deg, hsl(220, 20%, 12%), hsl(220, 20%, 18%));
+    background: linear-gradient(180deg, hsl(215, 50%, 10%), hsl(215, 45%, 15%));
   }
 
   .section-padding {
     @apply px-6 py-20 md:px-12 lg:px-24 lg:py-28;
   }
 
-  .gold-underline {
+  .green-underline {
     position: relative;
   }
 
-  .gold-underline::after {
+  .green-underline::after {
     content: '';
     position: absolute;
     bottom: -8px;
     left: 0;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, hsl(38, 65%, 50%), hsl(38, 65%, 65%));
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, hsl(145, 70%, 35%), hsl(145, 65%, 50%));
+  }
+
+  .industrial-border {
+    border-left: 4px solid hsl(145, 70%, 35%);
   }
 }

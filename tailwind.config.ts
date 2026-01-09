@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        display: ['Bebas Neue', 'sans-serif'],
+        sans: ['Barlow', 'sans-serif'],
+        condensed: ['Barlow Condensed', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -61,18 +62,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
-          dark: "hsl(var(--gold-dark))",
+        walsh: {
+          green: "hsl(var(--walsh-green))",
+          "green-light": "hsl(var(--walsh-green-light))",
+          "green-dark": "hsl(var(--walsh-green-dark))",
         },
-        slate: {
-          dark: "hsl(var(--slate-dark))",
-          DEFAULT: "hsl(var(--slate))",
-          light: "hsl(var(--slate-light))",
+        navy: {
+          dark: "hsl(var(--navy-dark))",
+          DEFAULT: "hsl(var(--navy))",
+          light: "hsl(var(--navy-light))",
         },
-        cream: "hsl(var(--cream))",
-        stone: "hsl(var(--stone))",
+        steel: "hsl(var(--steel))",
+        concrete: "hsl(var(--concrete))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -100,6 +101,14 @@ export default {
           from: { opacity: "0", transform: "translateX(-30px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
+        "slide-in-right": {
+          from: { opacity: "0", transform: "translateX(30px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "scale-in": {
+          from: { opacity: "0", transform: "scale(0.95)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -107,6 +116,8 @@ export default {
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
         "slide-in-left": "slide-in-left 0.8s ease-out forwards",
+        "slide-in-right": "slide-in-right 0.8s ease-out forwards",
+        "scale-in": "scale-in 0.5s ease-out forwards",
       },
     },
   },

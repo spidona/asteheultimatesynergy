@@ -1,32 +1,54 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
-import residentialImage from "@/assets/residential.jpg";
-import commercialImage from "@/assets/commercial.jpg";
-import plotsImage from "@/assets/plots.jpg";
+import { ArrowUpRight, Plane, Droplets, Train, Building2, Leaf, Route } from "lucide-react";
+import bridgeProject from "@/assets/bridge-project.jpg";
+import waterTreatment from "@/assets/water-treatment.jpg";
+import airportTerminal from "@/assets/airport-terminal.jpg";
+import heroConstruction from "@/assets/hero-construction.jpg";
 
-const services = [
+const experiences = [
   {
-    title: "Residential Projects",
-    description:
-      "We understand that your home is more than just a structure – it's a sanctuary, a reflection of your lifestyle and aspirations. Our expertise ensures every home is a masterpiece combining functionality with aesthetic appeal.",
-    image: residentialImage,
-    features: ["Luxury Apartments", "Gated Communities", "Custom Villas"],
+    icon: Plane,
+    title: "Aviation",
+    description: "Terminal expansions, runway construction, and airport modernization projects across North America.",
+    image: airportTerminal,
+    stats: "#1 Airport Builder",
   },
   {
-    title: "Commercial Projects",
-    description:
-      "Our commitment to excellence extends beyond residential spaces to meet the dynamic needs of the commercial sector. We are your partner in creating innovative and functional business environments.",
-    image: commercialImage,
-    features: ["Office Complexes", "Retail Spaces", "Business Parks"],
+    icon: Route,
+    title: "Bridges",
+    description: "Cable-stayed, suspension, and highway bridges connecting communities nationwide.",
+    image: bridgeProject,
+    stats: "#1 Bridge Builder",
   },
   {
-    title: "Open Plots",
-    description:
-      "Tailored to your unique preferences, our open plots are located in premium areas with excellent connectivity. From investment to building your dream home, we offer plots that align with your vision.",
-    image: plotsImage,
-    features: ["Prime Locations", "Clear Titles", "Gated Layouts"],
+    icon: Droplets,
+    title: "Water",
+    description: "Treatment plants, reservoirs, and water infrastructure ensuring clean water for millions.",
+    image: waterTreatment,
+    stats: "#1 Treatment Plant Builder",
+  },
+  {
+    icon: Train,
+    title: "Transit",
+    description: "Rail systems, stations, and transit infrastructure for modern urban mobility.",
+    image: heroConstruction,
+    stats: "Top 5 Transit Builder",
+  },
+  {
+    icon: Building2,
+    title: "Buildings",
+    description: "Commercial, institutional, and healthcare facilities built to the highest standards.",
+    image: airportTerminal,
+    stats: "Top 10 Building Contractor",
+  },
+  {
+    icon: Leaf,
+    title: "Environmental",
+    description: "Sustainable solutions for remediation, renewable energy, and green infrastructure.",
+    image: waterTreatment,
+    stats: "ENR Green Contractor",
   },
 ];
 
@@ -35,74 +57,82 @@ export const Services = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="section-padding bg-background" ref={ref}>
+    <section id="experience" className="section-padding bg-secondary" ref={ref}>
       <div className="container mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="mb-16"
         >
-          <span className="text-accent font-medium uppercase tracking-wider text-sm">
-            What We Offer
+          <span className="text-accent font-condensed text-lg uppercase tracking-[0.2em] mb-4 block">
+            Our Experience
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mt-3 mb-4">
-            Our Services
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground green-underline pb-4 inline-block">
+            Building America's Infrastructure
           </h2>
-          <p className="text-muted-foreground">
-            Comprehensive real estate solutions tailored to your unique needs, 
-            from dream homes to strategic investments.
+          <p className="text-muted-foreground text-lg max-w-2xl mt-8">
+            From airports to water treatment facilities, we deliver critical infrastructure 
+            projects that strengthen communities across North America.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+        {/* Experience Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {experiences.map((exp, index) => (
             <motion.div
-              key={service.title}
+              key={exp.title}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group relative bg-card rounded-sm overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative bg-card overflow-hidden cursor-pointer"
             >
               {/* Image */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-56 overflow-hidden">
                 <img
-                  src={service.image}
-                  alt={service.title}
+                  src={exp.image}
+                  alt={exp.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
                 
-                {/* Hover Icon */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-accent rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ArrowUpRight className="w-5 h-5 text-accent-foreground" />
+                {/* Icon */}
+                <div className="absolute top-4 left-4 w-12 h-12 bg-accent flex items-center justify-center">
+                  <exp.icon className="w-6 h-6 text-accent-foreground" />
+                </div>
+
+                {/* Stats Badge */}
+                <div className="absolute top-4 right-4 bg-primary-foreground/10 backdrop-blur-sm px-3 py-1">
+                  <span className="font-condensed text-sm text-primary-foreground font-semibold">
+                    {exp.stats}
+                  </span>
+                </div>
+
+                {/* Title Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="font-display text-3xl text-primary-foreground mb-2">
+                    {exp.title}
+                  </h3>
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="font-serif text-2xl text-foreground mb-3">{service.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {service.description}
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {exp.description}
                 </p>
-                
-                {/* Features */}
-                <div className="flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-medium rounded-full"
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                </div>
+                <a 
+                  href="#"
+                  className="inline-flex items-center gap-2 text-accent font-semibold uppercase text-sm tracking-wide group-hover:gap-3 transition-all"
+                >
+                  View Projects
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
               </div>
 
               {/* Bottom Accent */}
-              <div className="h-1 w-0 bg-gradient-gold group-hover:w-full transition-all duration-500" />
+              <div className="h-1 w-0 bg-gradient-green group-hover:w-full transition-all duration-500" />
             </motion.div>
           ))}
         </div>

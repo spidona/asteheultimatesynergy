@@ -1,112 +1,174 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Building2, Home, MapPin } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
-import heroImage from "@/assets/hero-building.jpg";
+import heroConstruction from "@/assets/hero-construction.jpg";
+import bridgeProject from "@/assets/bridge-project.jpg";
+import waterTreatment from "@/assets/water-treatment.jpg";
+import airportTerminal from "@/assets/airport-terminal.jpg";
+
+const slides = [
+  {
+    id: 1,
+    tag: "THE WALSH GROUP",
+    title: "Delivering Innovation",
+    subtitle: "Making History in Airport Construction",
+    image: heroConstruction,
+    link: "#experience",
+  },
+  {
+    id: 2,
+    tag: "THE WALSH GROUP",
+    title: "Creating Connections",
+    subtitle: "Top-Ranked U.S. Bridge Builder",
+    image: bridgeProject,
+    link: "#experience",
+  },
+  {
+    id: 3,
+    tag: "THE WALSH GROUP",
+    title: "Strengthening Resources",
+    subtitle: "Top-Ranked Treatment Plant Builder",
+    image: waterTreatment,
+    link: "#experience",
+  },
+  {
+    id: 4,
+    tag: "THE WALSH GROUP",
+    title: "Growing Careers",
+    subtitle: "Professional and Trade Opportunities",
+    image: airportTerminal,
+    link: "#careers",
+  },
+];
 
 export const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Modern luxury building"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/75 to-primary/50" />
-      </div>
+    <section id="home" className="relative h-screen overflow-hidden">
+      {/* Background Slides */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0 z-0"
+        >
+          <img
+            src={slides[currentSlide].image}
+            alt={slides[currentSlide].title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-primary/40" />
+        </motion.div>
+      </AnimatePresence>
 
       {/* Content */}
-      <div className="container mx-auto px-6 relative z-10 pt-32 lg:pt-20">
-        <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-medium mb-6">
-              <MapPin className="w-4 h-4" />
-              Somajiguda, Hyderabad
-            </span>
-          </motion.div>
+      <div className="container mx-auto px-6 relative z-10 h-full flex items-center pt-20">
+        <div className="max-w-4xl">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="inline-block text-accent font-condensed text-lg tracking-[0.3em] uppercase mb-4">
+                {slides[currentSlide].tag}
+              </span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-serif text-4xl md:text-5xl lg:text-7xl text-primary-foreground leading-tight mb-6"
-          >
-            Building Dreams,{" "}
-            <span className="text-gradient-gold">Creating Legacies</span>
-          </motion.h1>
+              <h1 className="font-display text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-primary-foreground leading-none mb-4">
+                {slides[currentSlide].title}
+              </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl"
-          >
-            Your trusted partner in turning real estate aspirations into reality. 
-            Excellence in residential and commercial construction since our foundation.
-          </motion.p>
+              <p className="font-condensed text-xl md:text-2xl lg:text-3xl text-primary-foreground/80 mb-8">
+                {slides[currentSlide].subtitle}
+              </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Button variant="gold" size="lg" className="group">
-              Explore Projects
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="heroOutline" size="lg">
-              Schedule Consultation
-            </Button>
-          </motion.div>
+              <Button variant="heroOutline" size="lg" className="group">
+                Learn More
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </motion.div>
+          </AnimatePresence>
         </div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-16 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-8"
-        >
-          {[
-            { icon: Building2, number: "50+", label: "Projects Completed" },
-            { icon: Home, number: "200+", label: "Happy Families" },
-            { icon: MapPin, number: "15+", label: "Prime Locations" },
-            { icon: Building2, number: "10+", label: "Years Experience" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center lg:text-left">
-              <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
-                <stat.icon className="w-6 h-6 text-accent" />
-                <span className="font-serif text-3xl md:text-4xl text-primary-foreground font-semibold">
-                  {stat.number}
-                </span>
-              </div>
-              <p className="text-primary-foreground/70 text-sm">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-3 bg-accent rounded-full mt-2"
-          />
+      {/* Slide Navigation */}
+      <div className="absolute bottom-8 left-0 right-0 z-20">
+        <div className="container mx-auto px-6">
+          {/* Navigation Arrows */}
+          <div className="flex items-center gap-4 mb-6">
+            <button
+              onClick={prevSlide}
+              className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+            <span className="text-primary-foreground font-condensed">prev</span>
+            <span className="text-primary-foreground font-condensed ml-8">next</span>
+            <button
+              onClick={nextSlide}
+              className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+            >
+              <ChevronRight className="w-8 h-8" />
+            </button>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.id}
+                onClick={() => setCurrentSlide(index)}
+                className={`text-left p-4 border-t-4 transition-all duration-300 ${
+                  index === currentSlide
+                    ? "border-accent bg-primary-foreground/10"
+                    : "border-primary-foreground/20 hover:border-primary-foreground/40"
+                }`}
+              >
+                <h3 className={`font-display text-lg md:text-xl ${
+                  index === currentSlide ? "text-primary-foreground" : "text-primary-foreground/60"
+                }`}>
+                  {slide.title}
+                </h3>
+                <p className={`font-condensed text-sm mt-1 ${
+                  index === currentSlide ? "text-primary-foreground/80" : "text-primary-foreground/40"
+                }`}>
+                  {slide.subtitle}
+                </p>
+              </button>
+            ))}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide ? "bg-accent w-8" : "bg-primary-foreground/30"
+                }`}
+              />
+            ))}
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

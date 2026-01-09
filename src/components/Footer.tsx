@@ -1,17 +1,22 @@
-import { Facebook, Instagram, Youtube, Linkedin, ArrowUp } from "lucide-react";
+import { Facebook, Linkedin, Instagram, Youtube, ArrowUp } from "lucide-react";
+
+const footerLinks = [
+  { name: "Our Company", href: "#about" },
+  { name: "Our Experience", href: "#experience" },
+  { name: "Our Services", href: "#services" },
+  { name: "Our Commitment", href: "#commitment" },
+  { name: "Your Career", href: "#careers" },
+  { name: "News & Media", href: "#" },
+  { name: "Bidding Opportunities", href: "#" },
+  { name: "Equipment For Sale", href: "#" },
+  { name: "Contact Us", href: "#contact" },
+];
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
   { icon: Instagram, href: "#", label: "Instagram" },
   { icon: Youtube, href: "#", label: "YouTube" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-];
-
-const quickLinks = [
-  { name: "About Us", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
 ];
 
 export const Footer = () => {
@@ -20,77 +25,57 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-slate-dark text-primary-foreground">
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-gold rounded flex items-center justify-center">
-                <span className="font-serif text-xl font-bold text-primary-foreground">E</span>
-              </div>
-              <div>
-                <span className="font-serif text-xl font-semibold">EVEREST</span>
-                <p className="text-xs tracking-[0.2em] uppercase opacity-70">Constructions & Developers</p>
-              </div>
-            </div>
-            <p className="text-primary-foreground/70 max-w-md mb-6">
-              Your trusted partner in turning real estate aspirations into reality. 
-              Building dreams and creating legacies since our foundation.
-            </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 bg-primary-foreground/10 rounded flex items-center justify-center hover:bg-accent transition-colors group"
-                >
-                  <social.icon className="w-5 h-5 group-hover:text-accent-foreground transition-colors" />
-                </a>
-              ))}
-            </div>
-          </div>
+    <footer className="bg-primary border-t border-primary-foreground/10">
+      <div className="container mx-auto px-6 py-12">
+        {/* Links Grid */}
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-12">
+          {footerLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-primary-foreground/70 hover:text-accent transition-colors font-medium"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-serif text-lg font-semibold mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-primary-foreground/70 hover:text-accent transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Social Links */}
+        <div className="flex justify-center gap-4 mb-12">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              aria-label={social.label}
+              className="w-10 h-10 bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors group"
+            >
+              <social.icon className="w-5 h-5 text-primary-foreground group-hover:text-accent-foreground transition-colors" />
+            </a>
+          ))}
+        </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="font-serif text-lg font-semibold mb-6">Contact Info</h4>
-            <ul className="space-y-3 text-primary-foreground/70">
-              <li>Somajiguda, Hyderabad</li>
-              <li>Adjacent to Park Hotel</li>
-              <li>+91 9949505134</li>
-              <li>info@everestdevelopers.com</li>
-            </ul>
+        {/* Legal */}
+        <div className="text-center text-primary-foreground/50 text-sm space-y-4">
+          <p>
+            ©{new Date().getFullYear()} The Walsh Group. Equal Opportunity Employer (EEO) including 
+            Disability/Protected Veterans. All Rights Reserved.
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+            <a href="#" className="hover:text-accent transition-colors">View our EEO Policy</a>
+            <span>|</span>
+            <a href="#" className="hover:text-accent transition-colors">Federal, State, and Federal Contractor Posters</a>
+            <span>|</span>
+            <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Scroll to Top */}
       <div className="border-t border-primary-foreground/10">
-        <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Everest Constructions & Developers. All rights reserved.
-          </p>
+        <div className="container mx-auto px-6 py-4 flex justify-end">
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 bg-accent rounded flex items-center justify-center hover:bg-accent/80 transition-colors"
+            className="w-12 h-12 bg-accent flex items-center justify-center hover:bg-accent/80 transition-colors"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-5 h-5 text-accent-foreground" />

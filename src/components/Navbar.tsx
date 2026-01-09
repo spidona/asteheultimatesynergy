@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Our Company", href: "#about" },
+  { name: "Our Experience", href: "#experience" },
+  { name: "Our Services", href: "#services" },
+  { name: "Our Commitment", href: "#commitment" },
+  { name: "Your Career", href: "#careers" },
 ];
 
 export const Navbar = () => {
@@ -29,17 +29,15 @@ export const Navbar = () => {
       <div className="hidden lg:block bg-primary text-primary-foreground py-2">
         <div className="container mx-auto px-6 flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+919949505134" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Phone className="w-4 h-4" />
-              <span>+91 9949505134</span>
-            </a>
-            <a href="mailto:info@everestdevelopers.com" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Mail className="w-4 h-4" />
-              <span>info@everestdevelopers.com</span>
-            </a>
+            <a href="#" className="hover:text-accent transition-colors font-medium">Equipment for Sale</a>
+            <a href="#" className="hover:text-accent transition-colors font-medium">News & Media</a>
+            <a href="#" className="hover:text-accent transition-colors font-medium">Bidding Opportunities</a>
+            <a href="#contact" className="hover:text-accent transition-colors font-medium">Contact Us</a>
           </div>
-          <div className="text-muted-foreground">
-            Somajiguda, Hyderabad
+          <div className="flex items-center gap-2 text-primary-foreground/80">
+            <MapPin className="w-4 h-4 text-accent" />
+            <span>Change Location</span>
+            <ChevronDown className="w-4 h-4" />
           </div>
         </div>
       </div>
@@ -50,46 +48,43 @@ export const Navbar = () => {
         animate={{ y: 0 }}
         className={`fixed top-0 lg:top-10 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-md lg:top-0"
-            : "bg-transparent"
+            ? "bg-background/98 backdrop-blur-md shadow-lg lg:top-0"
+            : "bg-background/95 backdrop-blur-sm"
         }`}
       >
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-gold rounded flex items-center justify-center">
-                <span className="font-serif text-xl font-bold text-primary-foreground">E</span>
+            <div className="relative flex items-center gap-2">
+              {/* Walsh-style logo with green accent */}
+              <div className="flex items-center">
+                <span className="font-display text-3xl md:text-4xl text-primary tracking-wider">WALSH</span>
+                <div className="ml-2 flex gap-0.5">
+                  <div className="w-3 h-8 bg-accent transform -skew-x-12" />
+                  <div className="w-3 h-8 bg-accent transform -skew-x-12" />
+                </div>
               </div>
-            </div>
-            <div className={`hidden sm:block ${isScrolled ? "text-foreground" : "text-primary-foreground"}`}>
-              <span className="font-serif text-xl font-semibold tracking-tight">EVEREST</span>
-              <p className="text-xs tracking-[0.2em] uppercase opacity-80">Constructions</p>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium tracking-wide uppercase transition-colors hover:text-accent ${
-                  isScrolled ? "text-foreground" : "text-primary-foreground"
-                }`}
+                className="text-sm font-semibold text-foreground/80 hover:text-accent transition-colors uppercase tracking-wide flex items-center gap-1"
               >
                 {link.name}
+                <ChevronDown className="w-4 h-4 opacity-60" />
               </a>
             ))}
-            <Button variant="gold" size="sm">
-              Get Quote
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 ${isScrolled ? "text-foreground" : "text-primary-foreground"}`}
+            className="lg:hidden p-2 text-foreground"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -109,13 +104,13 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground font-medium py-2 hover:text-accent transition-colors"
+                  className="text-foreground font-semibold py-2 hover:text-accent transition-colors uppercase tracking-wide"
                 >
                   {link.name}
                 </a>
               ))}
-              <Button variant="gold" className="mt-2">
-                Get Quote
+              <Button variant="green" className="mt-2">
+                Contact Us
               </Button>
             </div>
           </motion.div>

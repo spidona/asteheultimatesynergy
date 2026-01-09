@@ -9,39 +9,39 @@ import heroConstruction from "@/assets/hero-construction.jpg";
 const experiences = [{
   icon: Plane,
   title: "Aviation",
-  description: "Terminal expansions, runway construction, and airport modernization projects across North America.",
+  description: "Terminal expansions, runway construction, and airport modernization projects across Nigeria.",
   image: airportTerminal,
   stats: "#1 Airport Builder"
 }, {
   icon: Route,
   title: "Bridges",
-  description: "Cable-stayed, suspension, and highway bridges connecting communities nationwide.",
+  description: "Cable-stayed, suspension, and highway bridges connecting communities across Nigeria.",
   image: bridgeProject,
   stats: "#1 Bridge Builder"
 }, {
   icon: Droplets,
   title: "Water",
-  description: "Treatment plants, reservoirs, and water infrastructure ensuring clean water for millions.",
+  description: "Treatment plants, reservoirs, and water infrastructure ensuring clean water for millions of Nigerians.",
   image: waterTreatment,
   stats: "#1 Treatment Plant Builder"
 }, {
   icon: Train,
   title: "Transit",
-  description: "Rail systems, stations, and transit infrastructure for modern urban mobility.",
+  description: "Rail systems, stations, and transit infrastructure for modern Nigerian urban mobility.",
   image: heroConstruction,
   stats: "Top 5 Transit Builder"
 }, {
   icon: Building2,
   title: "Buildings",
-  description: "Commercial, institutional, and healthcare facilities built to the highest standards.",
+  description: "Commercial, institutional, and healthcare facilities built to the highest standards in Nigeria.",
   image: airportTerminal,
   stats: "Top 10 Building Contractor"
 }, {
   icon: Leaf,
   title: "Environmental",
-  description: "Sustainable solutions for remediation, renewable energy, and green infrastructure.",
+  description: "Sustainable solutions for remediation, renewable energy, and green infrastructure across West Africa.",
   image: waterTreatment,
-  stats: "ENR Green Contractor"
+  stats: "Leading Green Contractor"
 }];
 export const Services = () => {
   const ref = useRef(null);
@@ -67,7 +67,7 @@ export const Services = () => {
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground green-underline pb-4 inline-block">Building Nigeria's Infrastructure</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mt-8">
             From airports to water treatment facilities, we deliver critical infrastructure 
-            projects that strengthen communities across North America.
+            projects that strengthen communities across Nigeria and West Africa.
           </p>
         </motion.div>
 

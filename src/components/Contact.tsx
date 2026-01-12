@@ -10,22 +10,22 @@ const offices = [
   {
     name: "ATSEHE HEAD OFFICE",
     address: ["Plot 123 Ahmadu Bello Way", "Victoria Island, Lagos"],
-    phone: "+234 1 234 5678",
-    fax: "+234 1 234 5679",
+    phone: "0906 887 9544",
+    email: "asteheultimatesynergy@aol.com",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7305!2d3.4226!3d6.4281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zVmljdG9yaWEgSXNsYW5k!5e0!3m2!1sen!2sng!4v1234567890",
   },
   {
     name: "ABUJA OFFICE",
     address: ["15 Maitama District", "FCT, Abuja"],
-    phone: "+234 9 876 5432",
-    fax: "+234 9 876 5433",
+    phone: "0906 887 9544",
+    email: "asteheultimatesynergy@aol.com",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.0!2d7.4951!3d9.0765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTWFpdGFtYQ!5e0!3m2!1sen!2sng!4v1234567890",
   },
   {
     name: "PORT HARCOURT OFFICE",
     address: ["42 Trans Amadi Road", "Port Harcourt, Rivers State"],
-    phone: "+234 84 123 4567",
-    fax: "",
+    phone: "0906 887 9544",
+    email: "asteheultimatesynergy@aol.com",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.5!2d7.0134!3d4.8156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUG9ydCBIYXJjb3VydA!5e0!3m2!1sen!2sng!4v1234567890",
   },
 ];
@@ -113,12 +113,10 @@ export const Contact = () => {
                   ))}
                 </div>
                 
-                {office.phone && (
-                  <div className="space-y-1 text-primary-foreground/70">
-                    <p>T: {office.phone}</p>
-                    {office.fax && <p>F: {office.fax}</p>}
-                  </div>
-                )}
+                <div className="space-y-1 text-primary-foreground/70">
+                  {office.phone && <p>T: {office.phone}</p>}
+                  {office.email && <p>E: {office.email}</p>}
+                </div>
               </div>
             ))}
           </motion.div>
